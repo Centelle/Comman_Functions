@@ -29,7 +29,7 @@ class disjoint_set {
         return topmost;
     }
     
-    void union_set(int a, int b){
+    int union_set(int a, int b){
         a = find_set(a);
         b = find_set(b);
         if(a != b){
@@ -38,7 +38,9 @@ class disjoint_set {
             }
             parent[b] = a;
             size[a] += size[b];
+            return 1;
         }
+        return 0;
     }
 }; 
 int32_t main(){
