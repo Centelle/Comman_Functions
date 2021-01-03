@@ -4,6 +4,7 @@
 using namespace std;
 
 class disjoint_set {
+    // NOTE: This implementation of disjoint_set uses 1-based indexing 
     public:
     int n;
     vector<int> parent;
@@ -44,20 +45,17 @@ class disjoint_set {
     }
 }; 
 int32_t main(){
-    int n = 10;
+    int n = 10; // maximum number of vertices in the graph
     disjoint_set DSU(n);
-
-    DSU.make_set(1);
-    DSU.make_set(2);
-    DSU.make_set(3);
-    DSU.make_set(4);
-    DSU.make_set(5);
-    DSU.make_set(6);
-    DSU.make_set(7);
-
+    
+    for(int i = 1; i <= n; ++i){
+        DSU.make_set(i);   
+    }
+    
     DSU.union_set(1, 3);
     DSU.union_set(3, 5);
     DSU.union_set(4, 6);
+    
     for(int i = 1; i <= n; ++i){
         printf("parent[%d] = %d\n", i, DSU.parent[i]);
     }
